@@ -1,3 +1,32 @@
-.cookie:active {
-      transform: translateY(4px);
+.cookie-image {
+  cursor: pointer;
+  user-select:none;
+}
+
+.cookie-image:active {
+  transform: translateY(4px);
+}
+
+.cookie-wrapper {
+  text-align: center;
+  width: 100%;
+  flex:1 1;
+  flex-direction: column;
+}
+
+.cookie-logo {
+  animation: Cookie-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.cookie-header {
+  background-color: #2e3136;
+  height: 100%;
+  padding: 20px;
+  color: white;
+}
+
+@keyframes Cookie-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }

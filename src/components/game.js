@@ -4,6 +4,8 @@ import firebase from "firebase";
 import Servers from "./servers";
 import Play from "./play";
 
+import "../css/index.css";
+
 export default class Game extends Component {
     constructor(props) {
         super(props);
@@ -21,9 +23,11 @@ export default class Game extends Component {
     }
     render() {
         return (
-            <div>
-                <Servers />
-                <Play />
+            <div className="flex-vertical">
+                <section className="flex-horizontal">
+                    <Servers />
+                    <Play />
+                </section>
             </div>
         );
     }

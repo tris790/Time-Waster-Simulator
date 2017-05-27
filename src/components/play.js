@@ -32,16 +32,18 @@ export default class Play extends Component {
 
     render() {
         return (
-            <div>
-                <p>Your cookie count: {this.state.localCookieCount}</p>
-                <p>Server cookie count: {this.state.serverCookieCount}</p>
-                <img
-                    className="cookie"
-                    alt="cookie"
-                    src="https://www.getupandgobaked.com/wp-content/uploads/2015/03/smart-cookie-pic-copy.jpg"
-                    onClick={this.addCookie}
-                />
-                <button onClick={this.sendCookie}>Send cookies</button>
+            <div className="cookie-wrapper">
+                <div className="cookie-header">
+                    <img
+                        className="cookie-image"
+                        alt="cookie"
+                        src="http://www.greatamericancookies.com/app/themes/greatamericancookies/library/images/home/carousel1.png"
+                        onClick={this.addCookie}
+                    />
+                    <p>Your cookie count: {this.state.localCookieCount}</p>
+                    <p>Server cookie count: {this.state.serverCookieCount}</p>
+                    <button onClick={this.sendCookie}>Send cookies</button>
+                </div>
             </div>
         );
     }

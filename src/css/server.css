@@ -1,0 +1,45 @@
+.servers {
+      background-color: #1e2124;
+      color: white;
+      flex: 1 1;
+      max-width: 300px;
+      flex-direction: column;
+}
+.servers ul {
+    margin: 0;
+    padding: 0;
+}
+.servers li {
+    color: #6C6E71;
+    text-align: center;
+    margin: 20px 0px;
+}
+
+.servers li:hover {
+    color: white;
+}
+
+.collapsed {
+      width: 300px;
+      max-width: 50px;
+}
+.collapsed ul {
+    display: none;
+}
+
+.btnShowServer {
+      height: 50px;
+      width: 100%;
+      background-color: #008CBA;
+      border: none;
+      color: white;
+      cursor: pointer;
+}
+.btnLoadServer {
+      height: 50px;
+      width: 100%;
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      cursor: pointer;
+}
