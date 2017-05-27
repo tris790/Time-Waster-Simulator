@@ -1,2 +1,2 @@
-# time-waster-website
+# time-waster-simulator
 Gotta click the :cookie:
