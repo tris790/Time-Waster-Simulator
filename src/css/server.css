@@ -2,7 +2,7 @@
       background-color: #1e2124;
       color: white;
       flex: 1 1;
-      max-width: 300px;
+      min-width: 300px;
       flex-direction: column;
 }
 .servers ul {
@@ -21,7 +21,7 @@
 
 .collapsed {
       width: 300px;
-      max-width: 50px;
+      min-width: 50px;
 }
 .collapsed ul {
     display: none;

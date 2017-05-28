@@ -3,12 +3,13 @@ import firebase from "firebase";
 
 import Servers from "./servers";
 import Play from "./play";
+import Upgrade from "./upgrade";
 
 import "../css/index.css";
 
 export default class Game extends Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
     }
     componentWillMount() {
         var config = {
@@ -23,10 +24,11 @@ export default class Game extends Component {
     }
     render() {
         return (
-            <div className="flex-vertical">
-                <section className="flex-horizontal">
-                    <Servers />
+            <div className="flex-horizontal">
+                <Servers />
+                <section className="flex-vertical">
                     <Play />
+                    <Upgrade />
                 </section>
             </div>
         );

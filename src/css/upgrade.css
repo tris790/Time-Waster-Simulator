@@ -1,0 +1,30 @@
+.upgrade-wrapper {
+    background-color: #2e3136;
+}
+
+.upgrade-hotbar {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin: 0 20px 20px 20px;
+}
+.upgrade-hotbar li {
+    padding: 0 20px;
+    width: 100px;
+}
+
+.btn-upgrade {
+      height: 50px;
+      width: 100%;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+}
+.btn-buy {
+    background-color: #4CAF50;
+}
+
+.btn-sell {
+    background-color: red;
+}

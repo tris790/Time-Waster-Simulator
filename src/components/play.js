@@ -2,47 +2,91 @@ import React, { Component } from "react";
 import firebase from "firebase";
 
 import "../css/play.css";
+import spinnerImage from "../images/spinner-green.png";
 
 export default class Play extends Component {
     constructor() {
         super();
-        this.state = { localCookieCount: 0, serverCookieCount: 0 };
-        this.addCookie = this.updateCookie.bind(this, 1);
-        this.sendCookie = this.sendCookie.bind(this);
+        this.state = {
+            localSpinnerCount: 0,
+            serverSpinnerCount: 0,
+            spinnerSpeed: 0,
+            speedTimer: -1
+        };
+        this.clickSpinner = this.updateSpinner.bind(this, 1);
+        this.sendSpinner = this.sendSpinner.bind(this);
     }
 
     componentWillMount() {
-        firebase.database().ref("cookies").on("value", snapshot => {
-            this.setState({ serverCookieCount: snapshot.val()[1].cookieCount });
+        firebase.database().ref("spinners").on("value", snapshot => {
+            this.setState({
+                serverSpinnerCount: snapshot.val()[0].spinnerCount
+            });
         });
+
+        setInterval(() => {
+            if (this.state.localSpinnerCount > 0) sendSpinner();
+        }, 5000);
     }
 
-    updateCookie(count) {
+    updateSpinner(count) {
+        let { spinnerSpeed, localSpinnerCount, speedTimer } = this.state;
+        const newSpeed = spinnerSpeed < 2 ? spinnerSpeed + 1 : spinnerSpeed;
         this.setState({
-            localCookieCount: this.state.localCookieCount + count
+            localSpinnerCount: localSpinnerCount + count,
+            spinnerSpeed: newSpeed
         });
+        if (speedTimer === -1) {
+            console.log("true");
+            let newTimer = (speedTimer = setInterval(() => {
+                console.log("tick");
+                if (this.state.spinnerSpeed > 0)
+                    this.setState({
+                        spinnerSpeed: this.state.spinnerSpeed - 1
+                    });
+                else {
+                    clearInterval(this.state.speedTimer);
+                    this.setState({ speedTimer: -1 });
+                }
+            }, 4000));
+            this.setState({ speedTimer: newTimer });
+            console.log(speedTimer);
+        }
     }
-    sendCookie() {
-        firebase.database().ref("cookies/1").set({
-            cookieCount: this.state.serverCookieCount +
-                this.state.localCookieCount
+    sendSpinner() {
+        firebase.database().ref("spinners/0").set({
+            spinnerCount: this.state.serverSpinnerCount +
+                this.state.localSpinnerCount
         });
-        this.state.localCookieCount = 0;
+        this.setState({ localSpinnerCount: 0 });
     }
 
     render() {
         return (
-            <div className="cookie-wrapper">
-                <div className="cookie-header">
-                    <img
-                        className="cookie-image"
-                        alt="cookie"
-                        src="http://www.greatamericancookies.com/app/themes/greatamericancookies/library/images/home/carousel1.png"
-                        onClick={this.addCookie}
-                    />
-                    <p>Your cookie count: {this.state.localCookieCount}</p>
-                    <p>Server cookie count: {this.state.serverCookieCount}</p>
-                    <button onClick={this.sendCookie}>Send cookies</button>
+            <div className="spinner-wrapper">
+                <div className="spinner-header">
+                    <div>
+                        <img
+                            className={
+                                "spinner-image spinner-speed-" +
+                                    this.state.spinnerSpeed
+                            }
+                            alt="fidget spinner"
+                            src={spinnerImage}
+                            onClick={this.clickSpinner}
+                            draggable="false"
+                        />
+
+                        <p>
+                            Your spinner count: {this.state.localSpinnerCount}
+                        </p>
+                        <p>
+                            Server spinner count:
+                            {" "}
+                            {this.state.serverSpinnerCount}
+                        </p>
+                    </div>
+                    // <button onClick={this.sendSpinner}>Send spinners</button>
                 </div>
             </div>
         );

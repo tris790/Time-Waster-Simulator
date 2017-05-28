@@ -1,32 +1,57 @@
-.cookie-image {
+.spinner-image {
   cursor: pointer;
+  -ms-user-select: none;      /* IE 10+ */
+  -moz-user-select: none;     /* Firefox all */
+  -webkit-user-select: none;  /* Chrome all / Safari all */
   user-select:none;
+  max-width: 100%;
+  height: auto;
+  width: auto;
 }
 
-.cookie-image:active {
-  transform: translateY(4px);
-}
-
-.cookie-wrapper {
+.spinner-wrapper {
   text-align: center;
-  width: 100%;
   flex:1 1;
   flex-direction: column;
+  justify-content: center;
 }
 
-.cookie-logo {
-  animation: Cookie-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.cookie-header {
+.spinner-header {
   background-color: #2e3136;
   height: 100%;
-  padding: 20px;
+  padding: 0 20px;
   color: white;
 }
 
-@keyframes Cookie-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.spinner-speed-0 {
+}
+.spinner-speed-1 {
+    -webkit-animation: spinner-speed-1 1s infinite linear;
+    animation: spinner-speed-1 1s infinite linear;
+}
+.spinner-speed-2 {
+    -webkit-animation: spinner-speed-2 1s infinite linear;
+    animation: spinner-speed-2 1s infinite linear;
+}
+@-webkit-keyframes spinner-speed-0 {
+}
+@-webkit-keyframes spinner-speed-1 {
+  0% {
+      -webkit-transform: rotateZ(0deg);
+      transform: rotateZ(0deg);
+  }
+  100% {
+      -webkit-transform: rotateZ(720deg);
+      transform: rotateZ(720deg);
+  }
+}
+@-webkit-keyframes spinner-speed-2 {
+  0% {
+      -webkit-transform: rotateZ(0deg);
+      transform: rotateZ(0deg);
+  }
+  100% {
+      -webkit-transform: rotateZ(1080deg);
+      transform: rotateZ(1080deg);
+  }
 }

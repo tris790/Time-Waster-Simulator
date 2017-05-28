@@ -4,8 +4,8 @@ import firebase from "firebase";
 import "../css/server.css";
 
 export default class Servers extends Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = { servers: [], collapsed: true };
         this.toggleServerPanel = this.toggleServerPanel.bind(this);
     }
