@@ -1,2 +1,2 @@
 # time-waster-simulator
-Gotta click the :cookie:
+Gotta click the ߷
