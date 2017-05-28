@@ -25,7 +25,7 @@ export default class Play extends Component {
         });
 
         setInterval(() => {
-            if (this.state.localSpinnerCount > 0) sendSpinner();
+            if (this.state.localSpinnerCount > 0) this.sendSpinner();
         }, 5000);
     }
 
@@ -39,7 +39,6 @@ export default class Play extends Component {
         if (speedTimer === -1) {
             console.log("true");
             let newTimer = (speedTimer = setInterval(() => {
-                console.log("tick");
                 if (this.state.spinnerSpeed > 0)
                     this.setState({
                         spinnerSpeed: this.state.spinnerSpeed - 1
@@ -50,7 +49,6 @@ export default class Play extends Component {
                 }
             }, 4000));
             this.setState({ speedTimer: newTimer });
-            console.log(speedTimer);
         }
     }
     sendSpinner() {
@@ -86,7 +84,6 @@ export default class Play extends Component {
                             {this.state.serverSpinnerCount}
                         </p>
                     </div>
-                    // <button onClick={this.sendSpinner}>Send spinners</button>
                 </div>
             </div>
         );
